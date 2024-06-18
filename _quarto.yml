@@ -1,0 +1,19 @@
+project:
+  type: website
+
+website:
+  title: "Percentage of People Over 25, But Didn't Finish 9th Grade (NY)"
+  navbar:
+    left:
+      - href: index.qmd
+        text: Home
+      - about.qmd
+
+format:
+  html:
+    theme: cosmo
+    css: styles.css
+    toc: true
+
+
+

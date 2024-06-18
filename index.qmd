@@ -1,0 +1,29 @@
+---
+title: "Percentage of People Over 25, But Didn't Finish 9th Grade (NY)"
+author: "Alan Tao"
+execute: 
+  echo: false
+---
+
+```{r}
+#| message: false
+#| warning: false
+library(tidyverse)
+library(tidycensus)
+```
+
+```{r}
+#| message: false
+ny_data <- get_acs(geography = "county", variables = "DP02_0059PE", state = "NY", survey = "acs5", year = 2017, geometry = TRUE) |>
+  mutate(estimate = estimate / 100)
+```
+
+```{r}
+ggplot() +
+  geom_sf(data = ny_data, aes(fill = estimate)) +
+  scale_fill_viridis_c(name = "Percent", label = scales::percent) +
+  labs(title = "Percentage of People Over 25, But Didn't Finish 9th Grade (NY)",
+       caption = "Data Source: ACS 5-Year Estimates") +
+  theme_minimal()
+```
+
